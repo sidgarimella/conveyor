@@ -1,8 +1,8 @@
 ## Conveyor
 
-A set of tools that allows Jupyter notebook cell outputs to be computed and used in other notebooks and scripts. 
+A set of tools that allow Jupyter notebook cell outputs to be computed and used in other notebooks and scripts. 
 
-##### Use Cases
+#### Use Cases
 
  - Split ordered steps across multiple notebooks, picking up the most recent state information with each new notebook
  - Prototype and organize workflows entirely in Jupyter notebooks without having to manage script exports
