@@ -1,2 +1,3 @@
-# conveyor
-A toolset to accelerate Jupyter notebook workflows.
+# Conveyor
+### A toolset to accelerate Jupyter notebook workflows.
+
