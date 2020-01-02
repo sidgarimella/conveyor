@@ -81,10 +81,15 @@ class Notebook:
                         cell['source']))
                 code_cell_idx += 1
 
-
     # TODO: See how this handles compile/runtime errors
 
-    def run(self, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False):
+    def run(
+            self,
+            start_cell_idx=None,
+            select_cells=None,
+            until_variable=None,
+            from_state=None,
+            import_globals=False):
         """
         Executes notebook code cells.
 
@@ -95,6 +100,8 @@ class Notebook:
         :param until_variable: (optional) Name of variable to halt execution once acquired.
                                If variable does not exist, will run all cells.
         :param from_state: (optional) Initialized values before code execution. Used in pipelines.
+        :param import_globals: (optional) Set globals from notebook to globals in current workspace.
+                           False by default.
 
         :return: A list of dictionaries containing cell index's, state information, and outputs.
         """

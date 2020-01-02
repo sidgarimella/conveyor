@@ -25,7 +25,7 @@ from conveyor.globals import x, y, z, fig
 print(y)
 ```
 
-Conveyor can also provide you with any information available to you in a prior Jupyter workspace. 
+Conveyor can also provide you with any information available in a prior Jupyter workspace. 
 
 ```python
 results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")

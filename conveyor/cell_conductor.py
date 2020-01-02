@@ -8,7 +8,7 @@ def run_all(nb, state=None):
     aggregate = list()
     for cell_idx in range(len(nb.cells)):
         if state:
-            execute_cell_sequential_state(nb, cell_idx,state)
+            execute_cell_sequential_state(nb, cell_idx, state)
         else:
             execute_cell_sequential(nb, cell_idx)
 

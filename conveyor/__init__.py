@@ -5,8 +5,10 @@ import os
 
 def run_notebook(filename, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False):
     """
-    Executes notebook code cells.
+    Executes notebook code cells from notebook working directory.
 
+    :param start_cell_idx: (optional) Index of code cell to begin execution at.
+                           Useful for intercepting variables in notebooks for pipelines.
     :param select_cells: (optional) List of indices in order of select code cells to run. 
                          By default, all code cells will be run in order.
     :param until_variable: (optional) Name of variable to halt execution once acquired. 

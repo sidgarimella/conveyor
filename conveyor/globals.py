@@ -5,4 +5,3 @@ def push_globals(aggregate_output, result_type):
         # ignore conveyor output of result_type
         if not isinstance(final_state_globals[var], result_type):
             globals()[var] = final_state_globals[var]
-            
