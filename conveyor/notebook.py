@@ -21,7 +21,7 @@ class Notebook:
         self.__fp = self.__validate(filename)
         self.__NotebookNode = self.__nbconvert(self.__fp)
 
-        self.CodeCells = list()
+        self.cells = list()
         self.state = {}
 
         self.__extract_source()
@@ -71,11 +71,12 @@ class Notebook:
 
         for cell in all_cells:
             if cell['cell_type'] == 'code':
-                self.CodeCells.append(
-                    code_cell.CodeCell(
+                self.cells.append(
+                    code_cell.Cell(
                         code_cell_idx,
                         cell['source']))
                 code_cell_idx += 1
 
     def run(self):
-        cell_conductor.start(self)
+        cell_conductor.run_all(self)
+        return self.cells
