@@ -64,5 +64,4 @@ class TestPipelineRun(unittest.TestCase):
 
         data_processing4.add_transform(transform_magic)
         output3 = data_processing4.run()
-        print(output3)
         assert len(output3) == 3

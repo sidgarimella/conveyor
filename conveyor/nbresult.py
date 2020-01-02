@@ -1,6 +1,9 @@
 class NbResult:
-    def __init__(self, list_=list()):
-        self.li = list_
+    def __init__(self, list_=None):
+        if list_:
+            self.li = list_
+        else:
+            self.li = list()
 
     def __getattr__(self, method):
         return getattr(self.li, method)

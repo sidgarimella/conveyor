@@ -11,7 +11,7 @@ print(x)
 """
 
 """ Pipeline test
-"""
+
 from conveyor.multinb import Pipeline
 
 
@@ -29,7 +29,7 @@ data_processing.add_transform(transform_magic)
 results = data_processing.run()
 
 print(results)
-"""
+
 
 # Single notebook
 #results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
