@@ -28,15 +28,15 @@ class Pipeline:
         )
 
     def run(self):
-        aggregate = PlResult()
-
+        pl_aggregate = PlResult()
+        
         step_idx = 0
         for step in self.steps:
             self._state = step.apply(self._state)
             step_type = "notebook"
             if isinstance(step, TransformStep):
                 step_type = "transform"
-            aggregate.append({
+            pl_aggregate.append({
                 "step_idx": step_idx,
                 "step_type": step_type,
                 "file": None if isinstance(step, TransformStep) else step.filename,
@@ -44,4 +44,4 @@ class Pipeline:
             })
             step_idx += 1
 
-        return aggregate
+        return pl_aggregate

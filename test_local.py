@@ -11,7 +11,7 @@ print(x)
 """
 
 """ Pipeline test
-
+"""
 from conveyor.multinb import Pipeline
 
 
@@ -53,3 +53,4 @@ print(results)
 
 # Function test
 # print(results[-1]['state']['sum_three'](2, 3, 4))
+"""
