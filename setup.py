@@ -14,7 +14,8 @@ setuptools.setup(
     url="https://github.com/pypa/jupyter-conveyor",
     packages=setuptools.find_packages(),
     install_requires=[
-          'nbformat'
+          'nbformat',
+          'packaging'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

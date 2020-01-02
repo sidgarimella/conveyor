@@ -1,10 +1,14 @@
 import conveyor
 
 import pprint
-import matplotlib.pyplot as plt
 
+# Single notebook 
 results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
 
+# Notebook-in-notebook cross directory test
+# results = conveyor.run_notebook("conveyor/examples/Sample Calculations II.ipynb")
+
+# Final state check
 #print(results[-1]['state'])
 
 # Verify all

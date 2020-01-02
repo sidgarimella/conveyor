@@ -46,8 +46,6 @@ def execute_cell_sequential(nb, idx):
     # helpful if user wants to run non-adjacent cells or make future runs
     nb.state = nb.cells[idx].state
 
-# TODO: execute_cell method for running particular cells
-
 
 def execute_cell_idx(nb, idx):
     prior_state = nb.state

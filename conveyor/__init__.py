@@ -1,5 +1,7 @@
 from .notebook import Notebook 
 
+import os
+
 
 def run_notebook(filename, select_cells=None, until_variable=None):
     """
@@ -13,4 +15,9 @@ def run_notebook(filename, select_cells=None, until_variable=None):
     :return: A list of dictionaries containing cell index's, state information, and outputs. 
     """
     nb = Notebook(filename)
-    return nb.run(select_cells=select_cells, until_variable=until_variable)
+    current_wd = os.getcwd()
+    
+    os.chdir(os.path.dirname(os.path.abspath(filename)))
+    res = nb.run(select_cells=select_cells, until_variable=until_variable)
+    os.chdir(current_wd)
+    return res
