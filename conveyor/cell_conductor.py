@@ -1,6 +1,4 @@
-from cStringIO import StringIO
-
-import notebook
+from io import StringIO
 
 import sys
 import copy

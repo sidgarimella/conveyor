@@ -1,7 +1,7 @@
 from packaging import version
 
-import code_cell
-import cell_conductor
+from .code_cell import Cell
+from .cell_conductor import *
 
 import os
 import sys
@@ -74,7 +74,7 @@ class Notebook:
         for cell in all_cells:
             if cell['cell_type'] == 'code':
                 self.cells.append(
-                    code_cell.Cell(
+                    Cell(
                         code_cell_idx,
                         cell['source']))
                 code_cell_idx += 1
@@ -99,15 +99,15 @@ class Notebook:
             cell_idx = 0
             while until_variable not in self.state and cell_idx < len(
                     self.cells):
-                cell_output = cell_conductor.run_cell(self, cell_idx)
+                cell_output = run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
                 cell_idx += 1
             return custom_aggregate
 
         elif select_cells:
             for cell_idx in select_cells:
-                cell_output = cell_conductor.run_cell(self, cell_idx)
+                cell_output = run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
             return custom_aggregate
 
-        return cell_conductor.run_all(self)
+        return run_all(self)

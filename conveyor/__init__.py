@@ -1,4 +1,4 @@
-from notebook import Notebook
+from .notebook import Notebook 
 
 
 def run_notebook(filename, select_cells=None, until_variable=None):
