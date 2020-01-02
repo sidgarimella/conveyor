@@ -4,10 +4,13 @@ import sys
 import copy
 
 
-def run_all(nb):
+def run_all(nb, state=None):
     aggregate = list()
     for cell_idx in range(len(nb.cells)):
-        execute_cell_sequential(nb, cell_idx)
+        if state:
+            execute_cell_sequential_state(nb, cell_idx,state)
+        else:
+            execute_cell_sequential(nb, cell_idx)
 
         cell = nb.cells[cell_idx]
         aggregate.append({
@@ -30,6 +33,17 @@ def run_cell(nb, idx):
         "stdout": cell.output["stdout"],
         "result": cell.output["result"]
     }
+
+
+def execute_cell_sequential_state(nb, idx, state):
+    prior_state = None
+    if idx == 0:
+        prior_state = state
+    else:
+        prior_state = nb.cells[idx - 1].state
+
+    safe_exec(nb, idx, prior_state)
+    nb.state = nb.cells[idx].state
 
 
 def execute_cell_sequential(nb, idx):

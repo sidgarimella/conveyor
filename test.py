@@ -1,9 +1,24 @@
-import conveyor
+from conveyor.pipeline import Pipeline
 
 import pprint
 
+
+data_processing = Pipeline()
+data_processing.add_notebook(filename="conveyor/examples/load_data.ipynb", carry_vars=['df'])
+data_processing.add_notebook(filename="conveyor/examples/process_data.ipynb", 
+    carry_vars=['magic_number'],start_cell_idx=3)
+
+def transform_magic(from_state):
+    to_state = dict()
+    to_state['transformed_magic_number'] = -1 * from_state['magic_number']
+    return to_state
+
+data_processing.add_transform(transform_magic)
+results = data_processing.run()
+
+
 # Single notebook 
-results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
+# results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
 
 # Notebook-in-notebook cross directory test
 # results = conveyor.run_notebook("conveyor/examples/Sample Calculations II.ipynb")

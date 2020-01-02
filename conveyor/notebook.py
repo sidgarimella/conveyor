@@ -81,24 +81,40 @@ class Notebook:
 
     # TODO: See how this handles compile/runtime errors
 
-    def run(self, select_cells=None, until_variable=None):
+    def run(self, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None):
         """
         Executes notebook code cells.
 
+        :param start_cell_idx: (optional) Index of code cell to begin execution at.
+                               Useful for intercepting variables in notebooks for pipelines.
         :param select_cells: (optional) List of indices in order of select code cells to run.
                              By default, all code cells will be run in order.
-        :param until_variable: Name of variable to halt execution once acquired.
+        :param until_variable: (optional) Name of variable to halt execution once acquired.
                                If variable does not exist, will run all cells.
+        :param from_state: (optional) Initialized values before code execution. Used in pipelines.
 
         :return: A list of dictionaries containing cell index's, state information, and outputs.
         """
 
         custom_aggregate = list()
+        if from_state:
+            self.state = from_state
 
         if until_variable:
             cell_idx = 0
+            if start_cell_idx:
+                cell_idx = start_cell_idx
+
             while until_variable not in self.state and cell_idx < len(
                     self.cells):
+                cell_output = run_cell(self, cell_idx)
+                custom_aggregate.append(cell_output)
+                cell_idx += 1
+            return custom_aggregate
+
+        elif start_cell_idx:
+            cell_idx = start_cell_idx
+            while cell_idx < len(self.cells):
                 cell_output = run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
                 cell_idx += 1
@@ -110,4 +126,4 @@ class Notebook:
                 custom_aggregate.append(cell_output)
             return custom_aggregate
 
-        return run_all(self)
+        return run_all(self, state=from_state)

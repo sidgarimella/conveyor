@@ -24,7 +24,7 @@ x = results[-1]['state']['x']
 any_variable = results[-1]['state'][<variable_name>]
 
 # To get a specific cell output
-third_code_cell_result = results[3]['result']
+fourth_code_cell_result = results[3]['result']
 any_code_cell_result = results[<any_code_cell_idx>]['result']
 ```
 
