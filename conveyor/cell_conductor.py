@@ -13,24 +13,26 @@ def run_all(nb):
 
         cell = nb.cells[cell_idx]
         aggregate.append({
-            "cell_idx":cell_idx,
-            "code":cell.source,
-            "state":dict(cell.state),
-            "stdout":cell.output["stdout"],
-            "result":cell.output["result"]
+            "cell_idx": cell_idx,
+            "code": cell.source,
+            "state": dict(cell.state),
+            "stdout": cell.output["stdout"],
+            "result": cell.output["result"]
         })
     return aggregate
+
 
 def run_cell(nb, idx):
     execute_cell_idx(nb, idx)
     cell = nb.cells[idx]
     return {
-        "cell_idx":idx,
-        "code":cell.source,
-        "state":dict(cell.state),
-        "stdout":cell.output["stdout"],
-        "result":cell.output["result"]
+        "cell_idx": idx,
+        "code": cell.source,
+        "state": dict(cell.state),
+        "stdout": cell.output["stdout"],
+        "result": cell.output["result"]
     }
+
 
 def execute_cell_sequential(nb, idx):
     prior_state = None
@@ -47,12 +49,15 @@ def execute_cell_sequential(nb, idx):
     nb.state = nb.cells[idx].state
 
 # TODO: execute_cell method for running particular cells
+
+
 def execute_cell_idx(nb, idx):
     prior_state = nb.state
     safe_exec(nb, idx, prior_state)
     nb.state = nb.cells[idx].state
 
     return idx
+
 
 def safe_exec(nb, idx, prior_state):
     old_stdout = sys.stdout

@@ -85,19 +85,20 @@ class Notebook:
         """
         Executes notebook code cells.
 
-        :param select_cells: (optional) List of indices in order of select code cells to run. 
+        :param select_cells: (optional) List of indices in order of select code cells to run.
                              By default, all code cells will be run in order.
-        :param until_variable: Name of variable to halt execution once acquired. 
+        :param until_variable: Name of variable to halt execution once acquired.
                                If variable does not exist, will run all cells.
 
-        :return: A list of dictionaries containing cell index's, state information, and outputs. 
+        :return: A list of dictionaries containing cell index's, state information, and outputs.
         """
 
         custom_aggregate = list()
 
         if until_variable:
             cell_idx = 0
-            while until_variable not in self.state and cell_idx < len(self.cells):
+            while until_variable not in self.state and cell_idx < len(
+                    self.cells):
                 cell_output = cell_conductor.run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
                 cell_idx += 1
