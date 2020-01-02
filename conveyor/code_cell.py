@@ -12,4 +12,3 @@ class CodeCell:
         res += self.source
         res += "\n=============================\n"
         return res
-        

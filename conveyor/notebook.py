@@ -14,6 +14,7 @@ SUPPORTED_LANGUAGES = [
 PYTHON_MIN_REQ = "3.5"
 KNOWN_NBFORMAT = 4
 
+
 class Notebook:
     def __init__(self, filename):
         self.__filename = filename
@@ -23,19 +24,23 @@ class Notebook:
         self.CodeCells = list()
         self.__extract_source()
 
-
     def __validate(self, filename):
         if not os.path.isfile(filename):
-            print("File " + str(filename) + " does not exist or could not be found in the working directory.")
+            print(
+                "File " +
+                str(filename) +
+                " does not exist or could not be found in the working directory.")
             return False
 
         try:
             f = open(filename)
             return f
         except IOError:
-            print("File " + str(filename) + " could not be opened for processing.")
+            print(
+                "File " +
+                str(filename) +
+                " could not be opened for processing.")
             return False
-
 
     def __nbconvert(self, fp):
         res = nbformat.read(fp, KNOWN_NBFORMAT)
@@ -44,8 +49,12 @@ class Notebook:
             print("Language not supported.")
             return False
 
-        if version.parse(res['metadata']['language_info']['version']) < version.parse(PYTHON_MIN_REQ):
-            print("Conveyor currently only supports Python " + PYTHON_MIN_REQ + " and above.")
+        if version.parse(res['metadata']['language_info']
+                         ['version']) < version.parse(PYTHON_MIN_REQ):
+            print(
+                "Conveyor currently only supports Python " +
+                PYTHON_MIN_REQ +
+                " and above.")
             return False
 
         return res
@@ -60,10 +69,11 @@ class Notebook:
 
         for cell in all_cells:
             if cell['cell_type'] == 'code':
-                self.CodeCells.append(code_cell.CodeCell(code_cell_idx, cell['source']))
+                self.CodeCells.append(
+                    code_cell.CodeCell(
+                        code_cell_idx,
+                        cell['source']))
                 code_cell_idx += 1
 
     def run(self):
         cell_conductor.start(self.CodeCells)
-
-
