@@ -1,4 +1,4 @@
-from conveyor.pipeline import Pipeline
+from conveyor.multinb import Pipeline
 
 import pprint
 
