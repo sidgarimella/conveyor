@@ -12,22 +12,34 @@ A set of tools that allow Jupyter notebook cell outputs to be computed and used 
 
 Conveyor currently only supports Jupyter notebooks written in Python. It is important to ensure that you have the version of Python (and any dependencies) used in your notebooks also installed locally, or on the machine using this library.
 
-#### Example
+#### Examples
 
-Conveyor provides you with all the information you had in your Jupyter workspace. 
+For quick and simple access to global variables in a prior notebook:
 
 ```python
-import conveyor
-...
+conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)
+
+# all notebook globals pushed to conveyor.globals with import_globals flag
+from conveyor.globals import x, y, z
+
+print(y)
+```
+
+Conveyor can also provide you with any information available to you in a prior Jupyter workspace. 
+
+```python
 results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
 
-# To get variables available at the end of a notebook
-x = results[-1]['state']['x']
-any_variable = results[-1]['state'][<variable_name>]
+# To get a specific cell's source code
+code = results[1]['code']
 
 # To get a specific cell result
 fourth_code_cell_result = results[3]['result']
 any_code_cell_result = results[<any_code_cell_idx>]['result']
+
+# To get variables available in notebook
+x = results[-1]['state']['x']
+any_variable = results[-1]['state'][<variable_name>]
 ```
 
 There are options for running notebooks that can be used to optimize notebook execution, or stitch notebooks together in *pipelines*.

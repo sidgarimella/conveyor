@@ -1,6 +1,8 @@
 from packaging import version
 
 from .code_cell import Cell
+from .nbresult import NbResult
+from .globals import push_globals
 from .cell_conductor import *
 
 import os
@@ -79,9 +81,10 @@ class Notebook:
                         cell['source']))
                 code_cell_idx += 1
 
+
     # TODO: See how this handles compile/runtime errors
 
-    def run(self, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None):
+    def run(self, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False):
         """
         Executes notebook code cells.
 
@@ -96,7 +99,7 @@ class Notebook:
         :return: A list of dictionaries containing cell index's, state information, and outputs.
         """
 
-        custom_aggregate = list()
+        custom_aggregate = NbResult()
         if from_state:
             self.state = from_state
 
@@ -110,6 +113,10 @@ class Notebook:
                 cell_output = run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
                 cell_idx += 1
+
+            if import_globals:
+                push_globals(custom_aggregate, result_type=NbResult)
+
             return custom_aggregate
 
         elif start_cell_idx:
@@ -118,12 +125,25 @@ class Notebook:
                 cell_output = run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
                 cell_idx += 1
+
+            if import_globals:
+                push_globals(custom_aggregate, result_type=NbResult)
+
             return custom_aggregate
 
         elif select_cells:
             for cell_idx in select_cells:
                 cell_output = run_cell(self, cell_idx)
                 custom_aggregate.append(cell_output)
+
+            if import_globals:
+                push_globals(custom_aggregate, result_type=NbResult)
+
             return custom_aggregate
 
-        return run_all(self, state=from_state)
+        aggregate = NbResult(run_all(self, state=from_state))
+
+        if import_globals:
+            push_globals(aggregate, result_type=NbResult)
+
+        return aggregate

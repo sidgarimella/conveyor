@@ -1,6 +1,16 @@
-from conveyor.multinb import Pipeline
-
 import pprint
+
+import conveyor
+
+conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)
+from conveyor.globals import x, y, z
+
+print(x)
+
+
+""" Pipeline test
+
+from conveyor.multinb import Pipeline
 
 
 data_processing = Pipeline()
@@ -16,6 +26,8 @@ def transform_magic(from_state):
 data_processing.add_transform(transform_magic)
 results = data_processing.run()
 
+print(results)
+"""
 
 # Single notebook 
 # results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
@@ -27,8 +39,8 @@ results = data_processing.run()
 #print(results[-1]['state'])
 
 # Verify all
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint(results)
+#pp = pprint.PrettyPrinter(indent=2)
+#pp.pprint(results)
 
 # Object test
 # fig = results[5]['state']['fig']

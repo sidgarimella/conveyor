@@ -1,4 +1,5 @@
 from .pipeline_objects import *
+from .plresult import *
 
 
 class Pipeline:
@@ -18,7 +19,7 @@ class Pipeline:
             )
 
     def run(self):
-        aggregate = list()
+        aggregate = PlResult()
 
         step_idx = 0
         for step in self.steps:
