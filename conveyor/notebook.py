@@ -80,5 +80,4 @@ class Notebook:
                 code_cell_idx += 1
 
     def run(self):
-        cell_conductor.run_all(self)
-        return self.cells
+        return cell_conductor.run_all(self)

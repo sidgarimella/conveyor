@@ -3,12 +3,23 @@ from cStringIO import StringIO
 import notebook
 
 import sys
+import copy
 
 
 def run_all(nb):
+    aggregate = list()
     for cell_idx in range(len(nb.cells)):
         execute_cell_sequential(nb, cell_idx)
-        print(nb.cells[cell_idx])
+
+        cell = nb.cells[cell_idx]
+        aggregate.append({
+            "cell_idx":cell_idx,
+            "code":cell.source,
+            "state":dict(cell.state),
+            "stdout":cell.output["stdout"],
+            "result":cell.output["result"]
+        })
+    return aggregate
 
 
 def execute_cell_sequential(nb, idx):
@@ -26,6 +37,8 @@ def execute_cell_sequential(nb, idx):
     nb.state = nb.cells[idx].state
 
 # TODO: execute_cell method for running particular cells
+
+# TODO: test functions
 
 def safe_exec(nb, idx, prior_state):
     old_stdout = sys.stdout
