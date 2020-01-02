@@ -14,13 +14,13 @@ Conveyor currently only supports Jupyter notebooks written in Python. It is impo
 
 #### Examples
 
-For quick and simple access to global variables in a prior notebook:
+For quick and simple access to values in a prior notebook:
 
 ```python
 conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)
 
 # all notebook globals pushed to conveyor.globals with import_globals flag
-from conveyor.globals import x, y, z
+from conveyor.globals import x, y, z, fig
 
 print(y)
 ```
@@ -30,16 +30,20 @@ Conveyor can also provide you with any information available to you in a prior J
 ```python
 results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
 
-# To get a specific cell's source code
-code = results[1]['code']
+# Cells are zero-indexed, only code cells are counted
+code_cell_idx = 1
 
-# To get a specific cell result
-fourth_code_cell_result = results[3]['result']
-any_code_cell_result = results[<any_code_cell_idx>]['result']
+# Get a cell's source code
+code = results[code_cell_idx]['code']
 
-# To get variables available in notebook
-x = results[-1]['state']['x']
-any_variable = results[-1]['state'][<variable_name>]
+# Get a cell result
+cell_result = results[code_cell_idx]['result']
+
+# Get cell stdout
+cell_stdout = results[code_cell_idx]['stdout']
+
+# To get any variable available in notebook
+x = results.getvar('x')
 ```
 
 There are options for running notebooks that can be used to optimize notebook execution, or stitch notebooks together in *pipelines*.
