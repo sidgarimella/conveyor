@@ -13,5 +13,6 @@ class Cell:
         res += "\n=============================\n"
         res += self.output["stdout"]
         res += str(self.output["result"])
-        res += "\n\n" 
+        res += "\n"+str(self.state)
+        res += "\n" 
         return res

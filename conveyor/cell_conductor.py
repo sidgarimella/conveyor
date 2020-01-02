@@ -8,6 +8,7 @@ import sys
 def run_all(nb):
     for cell_idx in range(len(nb.cells)):
         execute_cell_sequential(nb, cell_idx)
+        print(nb.cells[cell_idx])
 
 
 def execute_cell_sequential(nb, idx):
@@ -24,11 +25,13 @@ def execute_cell_sequential(nb, idx):
     # helpful if user wants to run non-adjacent cells or make future runs
     nb.state = nb.cells[idx].state
 
+# TODO: execute_cell method for running particular cells
 
 def safe_exec(nb, idx, prior_state):
     old_stdout = sys.stdout
     redirected_output = sys.stdout = StringIO()
 
+    # TODO: preprocess source code to deal with !/% os/kernel commands
     exec(nb.cells[idx].source, globals(), prior_state)
     nb.cells[idx].state = prior_state
 

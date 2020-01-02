@@ -51,6 +51,8 @@ class Notebook:
             print("Language not supported.")
             return False
 
+        # TODO: Ensure local packages of different version aren't being used to run notebook code
+        # User needs same version of python
         if version.parse(res['metadata']['language_info']
                          ['version']) < version.parse(PYTHON_MIN_REQ):
             print(
