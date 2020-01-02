@@ -22,6 +22,8 @@ class Notebook:
         self.__NotebookNode = self.__nbconvert(self.__fp)
 
         self.CodeCells = list()
+        self.state = {}
+
         self.__extract_source()
 
     def __validate(self, filename):
@@ -76,4 +78,4 @@ class Notebook:
                 code_cell_idx += 1
 
     def run(self):
-        cell_conductor.start(self.CodeCells)
+        cell_conductor.start(self)
