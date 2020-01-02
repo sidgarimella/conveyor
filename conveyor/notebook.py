@@ -1,6 +1,7 @@
-from code_cell import CodeCell
-
 from packaging import version
+
+import code_cell
+import cell_conductor
 
 import os
 import sys
@@ -59,9 +60,10 @@ class Notebook:
 
         for cell in all_cells:
             if cell['cell_type'] == 'code':
-                self.CodeCells.append(CodeCell(code_cell_idx, cell['source']))
+                self.CodeCells.append(code_cell.CodeCell(code_cell_idx, cell['source']))
                 code_cell_idx += 1
 
-
+    def run(self):
+        cell_conductor.start(self.CodeCells)
 
 
