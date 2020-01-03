@@ -3,3 +3,4 @@ build/
 conveyor.egg-info
 dist/
 docs/build/
+jupyter_conveyor.egg-info
