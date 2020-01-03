@@ -49,6 +49,7 @@ class Notebook:
     def __nbconvert(self, fp):
         res = nbformat.read(fp, KNOWN_NBFORMAT)
 
+        # TODO: Raise exceptions
         if res['metadata']['kernelspec']['language'] not in SUPPORTED_LANGUAGES:
             print("Language not supported.")
             return False
@@ -68,7 +69,7 @@ class Notebook:
                 "You are trying to run code that is written in Python " + 
                 str(res['metadata']['language_info']['version'][0]) + 
                 " in Python " + str(sys.version_info[0]) + ". Errors may occur.")
-            return False
+        #    return False
 
         return res
 
