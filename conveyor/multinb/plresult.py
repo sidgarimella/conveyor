@@ -12,7 +12,10 @@ class PlResult:
         return len(self.li)
 
     def __getitem__(self, item):
-        return self.li[item]
+        if item >= 0:
+            return self.li[item]
+        else:
+            return self.li[len(self.li) + item]
 
     def __str__(self):
         return str(self.li)
