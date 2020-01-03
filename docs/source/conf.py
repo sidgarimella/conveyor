@@ -20,6 +20,7 @@
 project = 'Conveyor'
 copyright = '2020, Siddharth Garimella'
 author = 'Siddharth Garimella'
+master_doc = 'index'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
