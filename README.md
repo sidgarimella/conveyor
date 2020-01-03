@@ -70,9 +70,12 @@ results = data_processing.run()
 
 #### Installation
 
-This package will be made available on pypi.
+This package is available on pypi. Install it with pip with 
+
+`pip install jupyter-conveyor`
 
 #### Documentation
 
+See the docs folder, or [read them here](https://conveyor.readthedocs.io/en/latest/).
 
 

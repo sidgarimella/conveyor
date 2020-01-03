@@ -1,8 +1,8 @@
 Installation
 ============
 
-Conveyor will be made available on PyPi.
+Conveyor is available on PyPi as jupyter-conveyor. Install it with pip by running
 
-  `pip install conveyor`
+  `pip install jupyter-conveyor`
 
-should do the trick.
+While Conveyor should work for any version of Python 2.7 or above, it will be better supported for Python 3+.
