@@ -8,4 +8,4 @@ install:
   - python setup.py install
   - cd test && pip install -r requirements.txt
 script:
-  - python -m unittest discover
+  - git clone https://github.com/sidgarimella/conveyor.git && cd conveyor && python -m unittest discover
