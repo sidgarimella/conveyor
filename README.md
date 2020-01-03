@@ -1,4 +1,6 @@
 ## Conveyor
+[![Build Status](https://travis-ci.org/sidgarimella/conveyor.svg?branch=master)](https://travis-ci.org/sidgarimella/conveyor)
+
 
 Compute and use Jupyter notebook cell outputs in other notebooks and scripts with just a couple lines of code.
 
@@ -73,6 +75,8 @@ results = data_processing.run()
 This package is available on pypi. Install it with pip with 
 
 `pip install jupyter-conveyor`
+
+Currently, Conveyor is only compatible with Python 3+.
 
 #### Documentation
 
