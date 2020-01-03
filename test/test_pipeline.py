@@ -1,11 +1,13 @@
 import unittest
-import warnings
+import sys
 
 from conveyor.multinb import Pipeline
 
 class TestPipelineRun(unittest.TestCase):
     def setUp(self):
-        warnings.simplefilter('ignore', category=ResourceWarning)
+        if not sys.warnoptions:
+            import warnings
+            warnings.simplefilter("ignore")
 
     def test_pipeline_additions(self):
         data_processing1 = Pipeline()

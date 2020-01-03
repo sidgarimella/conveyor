@@ -1,11 +1,13 @@
 import unittest
-import warnings
+import sys
 
 import conveyor
 
 class TestSingleNotebookRun(unittest.TestCase):
     def setUp(self):
-        warnings.simplefilter('ignore', category=ResourceWarning)
+        if not sys.warnoptions:
+            import warnings
+            warnings.simplefilter("ignore")
 
     def test_results_exist(self):
         results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
