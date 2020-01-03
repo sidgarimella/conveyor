@@ -1,4 +1,3 @@
-from __future__ import print_function
 from packaging import version
 
 from .code_cell import Cell
@@ -31,14 +30,20 @@ class Notebook:
 
     def __validate(self, filename):
         if not os.path.isfile(filename):
-            print("File does not exist or could not be found in the working directory.")
+            print(
+                "File " +
+                str(filename) +
+                " does not exist or could not be found in the working directory.")
             return False
 
         try:
             f = open(filename)
             return f
         except IOError:
-            print("File could not be opened for processing.")
+            print(
+                "File " +
+                str(filename) +
+                " could not be opened for processing.")
             return False
 
     def __nbconvert(self, fp):
