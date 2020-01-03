@@ -23,3 +23,4 @@ Importing multiple notebooks in this way adds to and updates conveyor.nbglobals,
    from conveyor.nbglobals import <variable from notebook 1>, 
             <variable from notebook 2>, ...
 
+Please note that NbResult objects in prior notebooks cannot be imported using this method. 
