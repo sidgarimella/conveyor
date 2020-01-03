@@ -2,6 +2,10 @@ import pprint
 
 import conveyor
 
+results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
+pp = pprint.PrettyPrinter(indent=2)
+pp.pprint(str(results))
+
 
 """ Globals test
 conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)
@@ -32,7 +36,7 @@ print(results)
 
 
 # Single notebook
-#results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
+# results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
 
 # getvar test
 # print(results.getvar('fig'))

@@ -2,7 +2,7 @@ from packaging import version
 
 from .code_cell import Cell
 from .nbresult import NbResult
-from .globals import push_globals
+from .nbglobals import push_globals
 from .cell_conductor import *
 
 import os
@@ -61,6 +61,13 @@ class Notebook:
                 "Conveyor currently only supports Python " +
                 PYTHON_MIN_REQ +
                 " and above.")
+            return False
+
+        if int(res['metadata']['language_info']['version'][0]) != sys.version_info[0]:
+            print(
+                "You are trying to run code that is written in Python " + 
+                str(res['metadata']['language_info']['version'][0]) + 
+                " in Python " + str(sys.version_info[0]) + ". Errors may occur.")
             return False
 
         return res

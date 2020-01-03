@@ -1,4 +1,5 @@
 from .notebook import Notebook 
+from .nbglobals import *
 
 import os
 

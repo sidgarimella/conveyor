@@ -36,7 +36,7 @@ class NotebookStep:
 
 
 class TransformStep:
-    def __init__(self, l=None):
+    def __init__(self, l):
         self._l = l
         self.to_state = None
 

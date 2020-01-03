@@ -2,3 +2,4 @@
 build/
 conveyor.egg-info
 dist/
+docs/build/

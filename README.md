@@ -19,8 +19,8 @@ For quick and simple access to values in a prior notebook:
 ```python
 conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)
 
-# all notebook globals pushed to conveyor.globals with import_globals flag
-from conveyor.globals import x, y, z, fig
+# all notebook globals pushed to conveyor.nbglobals with import_globals flag
+from conveyor.nbglobals import x, y, z, fig
 
 print(y)
 ```
