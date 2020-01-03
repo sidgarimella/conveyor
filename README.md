@@ -1,6 +1,6 @@
 ## Conveyor
 
-A set of tools that allow Jupyter notebook cell outputs to be computed and used in other notebooks and scripts. 
+Compute and use Jupyter notebook cell outputs in other notebooks and scripts with just a couple lines of code.
 
 #### Use Cases
 
