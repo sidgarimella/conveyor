@@ -30,7 +30,7 @@ print(y)
 Conveyor can also provide you with any information available in a prior Jupyter workspace. 
 
 ```python
-results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
+results = conveyor.run_notebook("conveyor/examples/tests/Sample Calculations I.ipynb")
 
 # Cells are zero-indexed, only code cells are counted
 code_cell_idx = 1
@@ -54,8 +54,8 @@ There are options for running notebooks that can be used to optimize notebook ex
 from conveyor.multinb import Pipeline
 ...
 data_processing = Pipeline()
-data_processing.add_notebook(filename="conveyor/examples/load_data.ipynb", carry_vars=['df'])
-data_processing.add_notebook(filename="conveyor/examples/process_data.ipynb", 
+data_processing.add_notebook(filename="conveyor/examples/tests/load_data.ipynb", carry_vars=['df'])
+data_processing.add_notebook(filename="conveyor/examples/tests/process_data.ipynb", 
     carry_vars=['magic_number'], start_cell_idx=3)
 
 # Add custom intermediary steps
