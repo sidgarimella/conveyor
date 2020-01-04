@@ -74,7 +74,7 @@ def safe_exec(nb, idx, prior_state):
     redirected_output = sys.stdout = StringIO()
 
     # TODO: preprocess source code to deal with !/% os/kernel commands
-    exec(nb.cells[idx].source, globals(), prior_state)
+    exec(nb.cells[idx].source, prior_state, prior_state)
     nb.cells[idx].state = prior_state
 
     sys.stdout = old_stdout

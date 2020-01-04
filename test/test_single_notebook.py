@@ -1,5 +1,6 @@
 import unittest
 import sys
+import errno
 
 import conveyor
 
@@ -8,6 +9,10 @@ class TestSingleNotebookRun(unittest.TestCase):
         if not sys.warnoptions:
             import warnings
             warnings.simplefilter("ignore")
+
+    def test_file_exists(self):
+        self.assertRaises(FileNotFoundError, conveyor.run_notebook, 
+            "conveyor/examples/Sample Calculus IV.ipynb")
 
     def test_results_exist(self):
         results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")

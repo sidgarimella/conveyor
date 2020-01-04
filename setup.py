@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="jupyter-conveyor",
-    version="0.0.1",
+    version="0.0.2",
     license="MIT",
     author="Siddharth Garimella",
     author_email="sidgarimella@outlook.com",
@@ -13,7 +13,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sidgarimella/conveyor",
-    download_url="https://github.com/sidgarimella/conveyor/archive/v_001.tar.gz",
+    download_url="https://github.com/sidgarimella/conveyor/archive/v_002.tar.gz",
     packages=setuptools.find_packages(),
     install_requires=[
           'nbformat',

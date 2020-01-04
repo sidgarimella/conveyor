@@ -33,10 +33,6 @@ class Notebook:
 
     def __validate(self, filename):
         if not os.path.isfile(filename):
-            print(
-                "File " +
-                str(filename) +
-                " does not exist or could not be found in the working directory.")
             raise FileNotFoundError(
                 errno.ENOENT, os.strerror(
                     errno.ENOENT), filename)
@@ -54,13 +50,10 @@ class Notebook:
     def __nbconvert(self, fp):
         res = nbformat.read(fp, KNOWN_NBFORMAT)
 
-        # TODO: Raise exceptions
         if res['metadata']['kernelspec']['language'] not in SUPPORTED_LANGUAGES:
             raise ImportError(
                 "Languages other than Python are not currently supported.")
 
-        # TODO: Ensure local packages of different version aren't being used to run notebook code
-        # User needs same version of python
         if version.parse(res['metadata']['language_info']
                          ['version']) < version.parse(PYTHON_MIN_REQ):
             raise ImportError("Conveyor currently only supports Python " +

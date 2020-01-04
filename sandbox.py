@@ -2,10 +2,11 @@ import pprint
 
 import conveyor
 
-results = conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb")
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint(str(results))
+#results = conveyor.run_notebook("conveyor/examples/Sample Calculus I.ipynb")
+#pp = pprint.PrettyPrinter(indent=2)
+#pp.pprint(str(results))
 
+#results = conveyor.run_notebook("conveyor/examples/ml_example/Exploring Iris.ipynb")
 
 """ Globals test
 conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)
