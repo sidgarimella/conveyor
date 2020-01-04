@@ -22,7 +22,7 @@ def run_notebook(filename, start_cell_idx=None, select_cells=None, until_variabl
     :param timeout: (optional) Set timeout for notebook execution. If time limit exceeded, results
                     will not be available
 
-    :return: A list of dictionaries containing cell index's, state information, and outputs. 
+    :return: A list of dictionaries containing cell indices, state information, and outputs. 
     """
     nb = Notebook(filename)
     current_wd = os.getcwd()
