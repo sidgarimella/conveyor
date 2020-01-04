@@ -11,8 +11,8 @@ class TestPipelineRun(unittest.TestCase):
 
     def test_pipeline_additions(self):
         data_processing1 = Pipeline()
-        data_processing1.add_notebook(filename="conveyor/examples/load_data.ipynb", carry_vars=['df'])
-        data_processing1.add_notebook(filename="conveyor/examples/process_data.ipynb",
+        data_processing1.add_notebook(filename="conveyor/examples/tests/load_data.ipynb", carry_vars=['df'])
+        data_processing1.add_notebook(filename="conveyor/examples/tests/process_data.ipynb",
             carry_vars=['magic_number'],start_cell_idx=3)
 
         def transform_magic(from_state):
@@ -25,8 +25,8 @@ class TestPipelineRun(unittest.TestCase):
 
     def test_pipeline_output_exists(self):
         data_processing2 = Pipeline()
-        data_processing2.add_notebook(filename="conveyor/examples/load_data.ipynb", carry_vars=['df'])
-        data_processing2.add_notebook(filename="conveyor/examples/process_data.ipynb",
+        data_processing2.add_notebook(filename="conveyor/examples/tests/load_data.ipynb", carry_vars=['df'])
+        data_processing2.add_notebook(filename="conveyor/examples/tests/process_data.ipynb",
             carry_vars=['magic_number'],start_cell_idx=3)
 
         def transform_magic(from_state):
@@ -40,8 +40,8 @@ class TestPipelineRun(unittest.TestCase):
 
     def test_pipeline_output_accurate(self):
         data_processing3 = Pipeline()
-        data_processing3.add_notebook(filename="conveyor/examples/load_data.ipynb", carry_vars=['df'])
-        data_processing3.add_notebook(filename="conveyor/examples/process_data.ipynb",
+        data_processing3.add_notebook(filename="conveyor/examples/tests/load_data.ipynb", carry_vars=['df'])
+        data_processing3.add_notebook(filename="conveyor/examples/tests/process_data.ipynb",
             carry_vars=['magic_number'],start_cell_idx=3)
 
         def transform_magic(from_state):
@@ -55,8 +55,8 @@ class TestPipelineRun(unittest.TestCase):
 
     def test_pipeline_output_stages(self):
         data_processing4 = Pipeline()
-        data_processing4.add_notebook(filename="conveyor/examples/load_data.ipynb", carry_vars=['df'])
-        data_processing4.add_notebook(filename="conveyor/examples/process_data.ipynb",
+        data_processing4.add_notebook(filename="conveyor/examples/tests/load_data.ipynb", carry_vars=['df'])
+        data_processing4.add_notebook(filename="conveyor/examples/tests/process_data.ipynb",
             carry_vars=['magic_number'],start_cell_idx=3)
 
         def transform_magic(from_state):

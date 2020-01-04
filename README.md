@@ -72,11 +72,11 @@ results = data_processing.run()
 
 #### Installation
 
-This package is available on pypi. Install it with pip with 
+This package is available on pypi. Install it using pip with 
 
 `pip install jupyter-conveyor`
 
-Currently, Conveyor has only been tested with Python 3.5+, but should function with any Python 3+.
+Conveyor is only compatible with Python 3.5 and above.
 
 #### Documentation
 
