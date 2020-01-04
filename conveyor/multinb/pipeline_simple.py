@@ -29,7 +29,7 @@ class Pipeline:
 
     def run(self):
         pl_aggregate = PlResult()
-        
+
         step_idx = 0
         for step in self.steps:
             self._state = step.apply(self._state)

@@ -7,13 +7,16 @@ from .cell_conductor import *
 
 import os
 import sys
+import errno
+import warnings
+
 import nbformat
 
 SUPPORTED_LANGUAGES = [
     "python"
 ]
 
-PYTHON_MIN_REQ = "2.7"
+PYTHON_MIN_REQ = "3.5"
 KNOWN_NBFORMAT = 4
 
 
@@ -34,7 +37,9 @@ class Notebook:
                 "File " +
                 str(filename) +
                 " does not exist or could not be found in the working directory.")
-            return False
+            raise FileNotFoundError(
+                errno.ENOENT, os.strerror(
+                    errno.ENOENT), filename)
 
         try:
             f = open(filename)
@@ -44,32 +49,29 @@ class Notebook:
                 "File " +
                 str(filename) +
                 " could not be opened for processing.")
-            return False
+            raise
 
     def __nbconvert(self, fp):
         res = nbformat.read(fp, KNOWN_NBFORMAT)
 
         # TODO: Raise exceptions
         if res['metadata']['kernelspec']['language'] not in SUPPORTED_LANGUAGES:
-            print("Language not supported.")
-            return False
+            raise ImportError(
+                "Languages other than Python are not currently supported.")
 
         # TODO: Ensure local packages of different version aren't being used to run notebook code
         # User needs same version of python
         if version.parse(res['metadata']['language_info']
                          ['version']) < version.parse(PYTHON_MIN_REQ):
-            print(
-                "Conveyor currently only supports Python " +
-                PYTHON_MIN_REQ +
-                " and above.")
-            return False
+            raise ImportError("Conveyor currently only supports Python " +
+                              PYTHON_MIN_REQ +
+                              " and above.")
 
-        if int(res['metadata']['language_info']['version'][0]) != sys.version_info[0]:
-            print(
-                "You are trying to run code that is written in Python " + 
-                str(res['metadata']['language_info']['version'][0]) + 
-                " in Python " + str(sys.version_info[0]) + ". Errors may occur.")
-        #    return False
+        if int(res['metadata']['language_info']
+               ['version'][0]) != sys.version_info[0]:
+            warnings.warn("You are trying to run code that is written in Python " +
+                          str(res['metadata']['language_info']['version'][0]) +
+                          " in Python " + str(sys.version_info[0]) + ". Errors may occur.")
 
         return res
 
