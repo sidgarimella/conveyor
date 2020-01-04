@@ -1,10 +1,12 @@
+from func_timeout import func_timeout, FunctionTimedOut
+
 from .notebook import Notebook 
 from .nbglobals import *
 
 import os
 
 
-def run_notebook(filename, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False):
+def run_notebook(filename, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False, timeout=None):
     """
     Executes notebook code cells from notebook working directory.
 
@@ -17,6 +19,8 @@ def run_notebook(filename, start_cell_idx=None, select_cells=None, until_variabl
     :param from_state: (optional) Initialized values before code execution. Used in pipelines.
     :param import_globals: (optional) Set globals from notebook to globals in current workspace.
                            False by default. 
+    :param timeout: (optional) Set timeout for notebook execution. If time limit exceeded, results
+                    will not be available
 
     :return: A list of dictionaries containing cell index's, state information, and outputs. 
     """
@@ -24,7 +28,20 @@ def run_notebook(filename, start_cell_idx=None, select_cells=None, until_variabl
     current_wd = os.getcwd()
 
     os.chdir(os.path.dirname(os.path.abspath(filename)))
-    res = nb.run(start_cell_idx=start_cell_idx, select_cells=select_cells, until_variable=until_variable, 
-        from_state=from_state, import_globals=import_globals)
+    res = None
+    if timeout:
+        try:
+            res = func_timeout(timeout, nb.run, args=(
+                        start_cell_idx, 
+                        select_cells, 
+                        until_variable, 
+                        from_state, 
+                        import_globals
+                    ))
+        except FunctionTimedOut:
+            raise
+    else:
+        res = nb.run(start_cell_idx=start_cell_idx, select_cells=select_cells, until_variable=until_variable, 
+            from_state=from_state, import_globals=import_globals)
     os.chdir(current_wd)
     return res

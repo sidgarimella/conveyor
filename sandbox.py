@@ -7,6 +7,9 @@ import conveyor
 #pp.pprint(str(results))
 
 #results = conveyor.run_notebook("conveyor/examples/ml_example/Exploring Iris.ipynb")
+results = conveyor.run_notebook("conveyor/examples/tests/Errors Everywhere.ipynb")
+#print(results[-1]['stdout'])
+print("Garbage")
 
 """ Globals test
 conveyor.run_notebook("conveyor/examples/Sample Calculations I.ipynb", import_globals=True)

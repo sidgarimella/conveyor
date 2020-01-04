@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="jupyter-conveyor",
-    version="0.0.2",
+    version="0.0.3",
     license="MIT",
     author="Siddharth Garimella",
     author_email="sidgarimella@outlook.com",
@@ -13,19 +13,17 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sidgarimella/conveyor",
-    download_url="https://github.com/sidgarimella/conveyor/archive/v_002.tar.gz",
+    download_url="https://github.com/sidgarimella/conveyor/archive/v_003.tar.gz",
     packages=setuptools.find_packages(),
     install_requires=[
           'nbformat',
+          'func-timeout',
           'packaging'
     ],
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

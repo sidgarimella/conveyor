@@ -1,3 +1,5 @@
+from func_timeout import FunctionTimedOut
+
 import unittest
 import sys
 import errno
@@ -34,3 +36,9 @@ class TestSingleNotebookRun(unittest.TestCase):
     def test_functions_export(self):
         results = conveyor.run_notebook("conveyor/examples/tests/Sample Calculations II.ipynb")
         assert results[-1]['state']['sum_three'](2, 3, 4) == 9
+    """
+    def test_notebook_timeout(self):
+        self.assertRaises(FunctionTimedOut, conveyor.run_notebook, 
+            "conveyor/examples/tests/Big Timeout.ipynb", timeout=2)
+    """
+    

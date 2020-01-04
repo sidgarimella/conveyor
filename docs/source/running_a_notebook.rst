@@ -1,6 +1,10 @@
 Running a notebook
 ==================
 
+There are two requirements for running a notebook using Conveyor:
+* The notebook Python version matches what the version running Conveyor
+* Notebooks passed to Conveyor run all cells finish without error
+
 There's only one function used to run individual notebooks, but there are several options you can use to control a notebook's execution.
 
 
@@ -14,6 +18,9 @@ There's only one function used to run individual notebooks, but there are severa
    :param until_variable: (optional) Name of variable to halt execution once acquired. If variable does not exist, will run all cells.
    :param from_state: (optional) Initialized values before code execution. Used in pipelines.
    :param import_globals: (optional) Make globals from notebook available in nbglobals. False by default. 
+   :param timeout: (optional) Set timeout (in seconds) for notebook execution. If time limit exceeded, results
+   will not be available
+
    :rtype: NbResult object containing a list of cell states and results. For more information, see the section on Output.
 
 There are a couple important caveats when using this that are important to keep in mind:
