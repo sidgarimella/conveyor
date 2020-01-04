@@ -8,7 +8,7 @@ There are two requirements for running a notebook using Conveyor:
 There's only one function used to run individual notebooks, but there are several options you can use to control a notebook's execution.
 
 
-.. function:: run_notebook(filename, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False)
+.. function:: run_notebook(filename, start_cell_idx=None, select_cells=None, until_variable=None, from_state=None, import_globals=False, timeout=None)
 
    Executes code cells of a Jupyter notebook.
 
