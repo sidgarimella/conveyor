@@ -3,8 +3,8 @@ Running a notebook
 
 There are three requirements for running a notebook using Conveyor:
 
-* The notebook Python version matches what the version running Conveyor
-* Notebooks passed to Conveyor run all cells finish without error
+* The notebook Python version matches the version running Conveyor
+* Notebooks passed to Conveyor run all cells, finishing without error
 * The most recent version of the notebook is saved
 
 
