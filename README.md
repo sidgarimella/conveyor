@@ -79,7 +79,7 @@ This package is available on pypi. Install it using pip with
 
 `pip install jupyter-conveyor`
 
-Conveyor is only compatible with Python 3.5 and above.
+Conveyor is only compatible with Python versions > 3.5.
 
 #### Documentation
 
