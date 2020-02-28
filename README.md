@@ -54,6 +54,8 @@ There are options for running notebooks that can be used to optimize notebook ex
 from conveyor.multinb import Pipeline
 ...
 data_processing = Pipeline()
+
+# The variable 'df' from load_data.ipynb will replace 'df' in process_data.ipynb, starting from the third code cell
 data_processing.add_notebook(filename="conveyor/examples/tests/load_data.ipynb", carry_vars=['df'])
 data_processing.add_notebook(filename="conveyor/examples/tests/process_data.ipynb", 
     carry_vars=['magic_number'], start_cell_idx=3)
